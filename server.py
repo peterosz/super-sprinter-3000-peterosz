@@ -39,7 +39,7 @@ def create_id():
 
 def read_database():
     with open('database.csv') as database:
-        
+        pass
 
 
 def display_table():
