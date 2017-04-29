@@ -9,3 +9,5 @@
     font-size: 16px;
     border-radius: 8px;
 }
+
+tr:nth-child(even) {background-color: #f2f2f2}

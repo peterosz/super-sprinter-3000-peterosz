@@ -70,27 +70,15 @@ def delete_story():
     return redirect(url_for('display_table'))
 
 
-'''@app.route('/story/<story_id>', methods=['GET', 'POST'])
-def update_story(story_id):
-    list_to_update = []
+@app.route('/story/<story_id>', methods=['POST'])
+def update_story(story_id=None):
+    update_list = []
     database = read_database()
     for line in database:
         if line[0] == story_id:
             for item in line:
-                list_to_update.append(item)
-    story_title = list_to_update[1]
-    user_story = list_to_update[2]
-    acceptance_criteria = list_to_update[3]
-    business_value = list_to_update[4]
-    estimation = list_to_update[5]
-    select = list_to_update[6]
-    return render_template('form.html',
-                           story_title=story_title,
-                           user_story=user_story,
-                           acceptance_criteria=acceptance_criteria,
-                           business_value=business_value,
-                           estimation=estimation,
-                           select=select)'''
+                update_list.append(item)
+    return render_template('form.html', story_id=story_id, update_list=update_list)
 
 
 if __name__ == '__main__':

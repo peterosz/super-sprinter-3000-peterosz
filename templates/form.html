@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
+    <link rel="stylesheet" href="static/style.css">
     {% if not story_id %}
     <head>
         <title>Super Sprinter 3000 - Add new Story</title>
     </head>
     <body>
-        <link rel="stylesheet" href="static/style.css">
         <form action="/story" method="POST">
         <h2>User Story Manager - Add new story</h2>
         <p>Story Title:<br>
@@ -37,7 +37,6 @@
         <title>Super Sprinter 3000 - Edit Story</title>
     </head>
     <body>
-        <link rel="stylesheet" href="static/style.css">
         <form action="/story" method="POST">
         <h2>Super Sprinter 3000 - Edit Story</h2>
         <p>Story Title:<br>
@@ -47,7 +46,7 @@
         <p>Acceptance criteria:<br>
         <textarea rows="6" cols="30" name="acceptance_criteria" required>{{ update_list[3] }}</textarea></p>
         <p>Business Value<br>
-        <input type="number" min="100" max="1500" step="100" name="business_value" required>{{ update_list[4] }}</p>
+        <input type="number" min="100" max="1500" step="100" name="business_value" value="{{ update_list[4] }}"required></p>
         <p>Estimation (h)<br>
         <input type="number" min="0.5" max="40" step="0.5" name="estimation" value="{{ update_list[5] }}" required></p>
         <p>Status<br>

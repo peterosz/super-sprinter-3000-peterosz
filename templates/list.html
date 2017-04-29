@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
+    <link rel="stylesheet" href="static/style.css">
     <head>
         <title>Super Sprinter 3000</title>
     </head>
     <body>
-        <link rel="stylesheet" href="static/style.css">
         <h2>User Story Manager</h2>
         <form action="/story" method="GET">
         <p><input type="submit" value="Create new entry" class="button" href="/story"></p>
         </form>
-            <p><table border=1>
+            <p><table border=0>
             <tr>
             {% for item in table_titles %}
-                <td>{{item}}</td>
+                <td><b>{{item}}</b></td>
             {% endfor %}
             </tr>
             {% for lines in data_in_database %}
