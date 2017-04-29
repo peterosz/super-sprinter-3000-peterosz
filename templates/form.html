@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" href="static/style.css">
     {% if not story_id %}
     <head>
         <title>Super Sprinter 3000 - Add new Story</title>
+        <link rel="stylesheet" type='text/css' href="static/style.css" title="SSprint">
     </head>
     <body>
         <form action="/story" method="POST">
         <h2>User Story Manager - Add new story</h2>
         <p>Story Title:<br>
-        <textarea rows="1" cols="30" name="story_title" required></textarea></p>
+        <textarea rows="1" cols="30" name="story_title" id="story_title" required></textarea></p>
         <p>User story:<br>
-        <textarea rows="6" cols="30" name="user_story" required></textarea></p>
+        <textarea rows="6" cols="30" name="user_story" id="user_story"required></textarea></p>
         <p>Acceptance criteria:<br>
-        <textarea rows="6" cols="30" name="acceptance_criteria" required></textarea></p>
+        <textarea rows="6" cols="30" name="acceptance_criteria" id="acceptance_criteria"required></textarea></p>
         <p>Business Value<br>
-        <input type="number" min="100" max="1500" step="100" name="business_value" required></p>
+        <input type="number" min="100" max="1500" step="100" name="business_value" id="business_value"required></p>
         <p>Estimation (h)<br>
-        <input type="number" min="0.5" max="40" step="0.5" name="estimation" required></p>
+        <input type="number" min="0.5" max="40" step="0.5" name="estimation" id="estimation"required></p>
         <p>Status<br>
         <select name="select" id="select" required>
             <option>Planning</option>
@@ -26,41 +26,42 @@
             <option>Review</option>
             <option>Done</option>
         </select></p>
-        <table>
-            <tr>
-        <td><a href="/list" class="button">Back to list</a>  
-        <td><p><input type="submit" value="Create" name="create" class="button"></p></td>
+        
+        <a href="/list" class="button" id="bottom_buttons">Go to entry list</a>  
+        <p><button type="submit" value="Create" name="create" class="button">Create</button></p>
     </form>
     </body>
     {% else %}
     <head>
         <title>Super Sprinter 3000 - Edit Story</title>
+        <link rel="stylesheet" type='text/css' href="static/style.css" title="SSprint">
     </head>
     <body>
         <form action="/update" method="POST">
         <h2>Super Sprinter 3000 - Edit Story</h2>
         <p>Story Title:<br>
-        <textarea rows="1" cols="30" name="story_title" required>{{ update_list[1] }}</textarea></p>
+        <textarea rows="1" cols="30" name="story_title" id="story_title" required>{{ update_list[1] }}</textarea></p>
         <p>User story:<br>
-        <textarea rows="6" cols="30" name="user_story" required>{{ update_list[2] }}</textarea></p>
+        <textarea rows="6" cols="30" name="user_story" id="user_story" required>{{ update_list[2] }}</textarea></p>
         <p>Acceptance criteria:<br>
-        <textarea rows="6" cols="30" name="acceptance_criteria" required>{{ update_list[3] }}</textarea></p>
+        <textarea rows="6" cols="30" name="acceptance_criteria" id="acceptance_criteria" required>{{ update_list[3] }}</textarea></p>
         <p>Business Value<br>
-        <input type="number" min="100" max="1500" step="100" name="business_value" value="{{ update_list[4] }}"required></p>
+        <input type="number" min="100" max="1500" step="100" name="business_value" id="business_value" value="{{ update_list[4] }}"required></p>
         <p>Estimation (h)<br>
-        <input type="number" min="0.5" max="40" step="0.5" name="estimation" value="{{ update_list[5] }}" required></p>
+        <input type="number" min="0.5" max="40" step="0.5" name="estimation" id="estimation" value="{{ update_list[5] }}" required></p>
         <p>Status<br>
-        <select name="select" value="{{ update_list[6] }}"  required>
-            <option value="Planning">Planning</option>
-            <option value="TODO">TODO</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Review">Review</option>
-            <option value="Done">Done</option>
+        <select name="select" id="select">
+            <option selected hidden>{{ update_list[6] }}</option>
+            <option>Planning</option>
+            <option>TODO</option>
+            <option>In Progress</option>
+            <option>Review</option>
+            <option>Done</option>
         </select></p>
-        <table>
-            <tr>
-        <td><a href="/list" class="button">Back to list</a>  
-        <td><p><button type="submit" value="{{ update_list[0] }}" name="update" class="button">Update</button></p></td>
+        
+    
+        <a href="/list" class="button">Go to entry list</a>  
+        <p><button type="submit" value="{{ update_list[0] }}" name="update" class="button">Update</button></p>
     </form>
     </body>
     {% endif %}
