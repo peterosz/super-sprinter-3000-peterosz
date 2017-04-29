@@ -26,11 +26,10 @@ def add_to_database():
 
 
 def create_id():
-    with open('database.csv') as database:
-        row_count = 0
-        for row in database:
-            row_count += 1
-        return str(row_count + 1)
+    database = read_database()
+    id_list = [row[0] for row in database]
+    new_id = int(max(id_list)) + 1
+    return str(new_id)
 
 
 def read_database():
@@ -63,7 +62,11 @@ def delete_story():
         if line[0] == id_to_delete:
             datalist.remove(line)
     with open('database.csv', 'w') as database:
-        database.write(str(datalist))
+        for item in datalist:
+            line = [element.strip('\n') for element in item]
+            writeable_line = ';'.join(line)
+            database.write(writeable_line)
+            database.write('\n')
     return redirect(url_for('display_table'))
 
 
