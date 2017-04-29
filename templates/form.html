@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    {% if not story_id %}
     <head>
         <title>Super Sprinter 3000 - Add new Story</title>
     </head>
@@ -12,7 +13,7 @@
         <p>User story:<br>
         <textarea rows="6" cols="30" name="user_story" required></textarea></p>
         <p>Acceptance criteria:<br>
-        <textarea rows="6" cols="30" name="acceptance_criteria"  required></textarea></p>
+        <textarea rows="6" cols="30" name="acceptance_criteria" required></textarea></p>
         <p>Business Value<br>
         <input type="number" min="100" max="1500" step="100" name="business_value" required></p>
         <p>Estimation (h)<br>
@@ -31,4 +32,37 @@
         <td><p><input type="submit" value="Create" name="create" class="button"></p></td>
     </form>
     </body>
+    {% else %}
+    <head>
+        <title>Super Sprinter 3000 - Edit Story</title>
+    </head>
+    <body>
+        <link rel="stylesheet" href="static/style.css">
+        <form action="/story" method="POST">
+        <h2>Super Sprinter 3000 - Edit Story</h2>
+        <p>Story Title:<br>
+        <textarea rows="1" cols="30" name="story_title" required>{{ update_list[1] }}</textarea></p>
+        <p>User story:<br>
+        <textarea rows="6" cols="30" name="user_story" required>{{ update_list[2] }}</textarea></p>
+        <p>Acceptance criteria:<br>
+        <textarea rows="6" cols="30" name="acceptance_criteria" required>{{ update_list[3] }}</textarea></p>
+        <p>Business Value<br>
+        <input type="number" min="100" max="1500" step="100" name="business_value" required>{{ update_list[4] }}</p>
+        <p>Estimation (h)<br>
+        <input type="number" min="0.5" max="40" step="0.5" name="estimation" value="{{ update_list[5] }}" required></p>
+        <p>Status<br>
+        <select name="select" value="{{ update_list[6] }}"  required>
+            <option value="Planning">Planning</option>
+            <option value="TODO">TODO</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Review">Review</option>
+            <option value="Done">Done</option>
+        </select></p>
+        <table>
+            <tr>
+        <td><a href="/list" class="button">Back to list</a>  
+        <td><p><input type="submit" value="Update" name="update" class="button"></p></td>
+    </form>
+    </body>
+    {% endif %}
     </html>
