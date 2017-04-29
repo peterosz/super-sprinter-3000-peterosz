@@ -61,17 +61,21 @@ def delete_story():
     for line in datalist:
         if line[0] == id_to_delete:
             datalist.remove(line)
+    rewrite_database(datalist)
+    return redirect(url_for('display_table'))
+
+
+def rewrite_database(datalist):
     with open('database.csv', 'w') as database:
         for item in datalist:
             line = [element.strip('\n') for element in item]
             writeable_line = ';'.join(line)
             database.write(writeable_line)
             database.write('\n')
-    return redirect(url_for('display_table'))
 
 
 @app.route('/story/<story_id>', methods=['POST'])
-def update_story(story_id=None):
+def show_story_in_update_panel(story_id=None):
     update_list = []
     database = read_database()
     for line in database:
@@ -79,6 +83,27 @@ def update_story(story_id=None):
             for item in line:
                 update_list.append(item)
     return render_template('form.html', story_id=story_id, update_list=update_list)
+
+
+@app.route('/update', methods=['POST'])
+def update_in_database():
+    story_id = request.form['update']
+    database = read_database()
+    for line in database:
+        if line[0] == story_id:
+            database.remove(line)
+    request_list = ['story_title',
+                    'user_story',
+                    'acceptance_criteria',
+                    'business_value',
+                    'estimation',
+                    'select']
+    update_list = [story_id]
+    for name in request_list:
+        update_list.append(request.form[name])
+    database.append(update_list)
+    rewrite_database(database)
+    return redirect(url_for('display_table'))
 
 
 if __name__ == '__main__':

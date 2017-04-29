@@ -37,7 +37,7 @@
         <title>Super Sprinter 3000 - Edit Story</title>
     </head>
     <body>
-        <form action="/story" method="POST">
+        <form action="/update" method="POST">
         <h2>Super Sprinter 3000 - Edit Story</h2>
         <p>Story Title:<br>
         <textarea rows="1" cols="30" name="story_title" required>{{ update_list[1] }}</textarea></p>
@@ -60,7 +60,7 @@
         <table>
             <tr>
         <td><a href="/list" class="button">Back to list</a>  
-        <td><p><input type="submit" value="Update" name="update" class="button"></p></td>
+        <td><p><button type="submit" value="{{ update_list[0] }}" name="update" class="button">Update</button></p></td>
     </form>
     </body>
     {% endif %}
