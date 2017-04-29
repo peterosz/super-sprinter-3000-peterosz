@@ -4,4 +4,35 @@
         <title>Super Sprinter 3000</title>
     </head>
     <body>
+        <link rel="stylesheet" href="static/style.css">
+        <h2>User Story Manager</h2>
+        <form action="/story" method="GET">
+        <p><input type="submit" value="Create new entry" class="button"></p>
+        </form>
+            <p><table border=1>
+            <tr>
+            {% for item in table_titles %}
+                <td>{{item}}</td>
+            {% endfor %}
+            </tr>
+            {% for lines in data_in_database %}
+                <tr>
+                    {% for elements in lines %}
+                        <td>{{ elements }}</td>
+                    {% endfor %}
+                    <td align="middle">
+                        <form action="story/{{ lines[0] }}" method="POST">
+                        <input  name="edit" type="image" src="static/edit.png" 
+                         alt="Edit" width="30" height="30" value="{{ lines[0] }}">
+                        </form></td>
+                    <td align="middle">
+                        <form action="/delete" method="POST">
+                        <input  name="delete" type="image" src="static/delete.png" 
+                         alt="Edit" width="30" height="30" value="{{ lines[0] }}">
+                        </form></td>
+                </tr>
+            {% endfor %}
+            </table></p>
+    </body>
+</html>
         
