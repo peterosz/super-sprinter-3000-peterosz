@@ -27,8 +27,8 @@
             <option>Done</option>
         </select></p>
         
-        <a href="/list" class="button" id="bottom_buttons">Go to entry list</a>  
-        <p><button type="submit" value="Create" name="create" class="button">Create</button></p>
+        <a href="/list" class="button" id="button">Go to entry list</a>  
+        <p><button type="submit" value="Create" name="create" class="button" id="button">Create</button></p>
     </form>
     </body>
     {% else %}
@@ -60,8 +60,8 @@
         </select></p>
         
     
-        <a href="/list" class="button">Go to entry list</a>  
-        <p><button type="submit" value="{{ update_list[0] }}" name="update" class="button">Update</button></p>
+        <a href="/list" class="button" id="button">Go to entry list</a>  
+        <p><button type="submit" value="{{ update_list[0] }}" name="update" class="button" id="button">Update</button></p>
     </form>
     </body>
     {% endif %}
