@@ -3,7 +3,7 @@
     {% if not story_id %}
     <head>
         <title>Super Sprinter 3000 - Add new Story</title>
-        <link rel="stylesheet" type='text/css' href="static/style.css" title="SSprint">
+        <link rel="stylesheet" type='text/css' href="/static/style.css" title="SSprint">
     </head>
     <body>
         <form action="/story" method="POST">
@@ -26,15 +26,18 @@
             <option>Review</option>
             <option>Done</option>
         </select></p>
-        
-        <a href="/list" class="button" id="button">Go to entry list</a>  
+        <div name="bottom_button1" id="bottom_button1">
+        <a href="/list" class="button" id="button">Go to entry list</a> 
+        </div>
+        <div name="bottom_button2" id="bottom_button2"> 
         <p><button type="submit" value="Create" name="create" class="button" id="button">Create</button></p>
+        </div>
     </form>
     </body>
     {% else %}
     <head>
         <title>Super Sprinter 3000 - Edit Story</title>
-        <link rel="stylesheet" type='text/css' href="static/style.css" title="SSprint">
+        <link rel="stylesheet" type='text/css' href="/static/style.css" title="SSprint">
     </head>
     <body>
         <form action="/update" method="POST">
@@ -59,9 +62,12 @@
             <option>Done</option>
         </select></p>
         
-    
-        <a href="/list" class="button" id="button">Go to entry list</a>  
+        <div name="bottom_button1" id="bottom_button1">
+        <a href="/list" class="button" id="button">Go to entry list</a>
+        </div>
+        <div name="bottom_button2" id="bottom_button2">
         <p><button type="submit" value="{{ update_list[0] }}" name="update" class="button" id="button">Update</button></p>
+        </div>
     </form>
     </body>
     {% endif %}
