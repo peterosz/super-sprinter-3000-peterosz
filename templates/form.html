@@ -9,11 +9,11 @@
         <form action="/story" method="POST">
         <h2>User Story Manager - Add new story</h2>
         <p>Story Title:<br>
-        <textarea rows="1" cols="30" name="story_title" id="story_title" required></textarea></p>
+        <textarea rows="1" cols="30" name="story_title" id="story_title" maxlength="64" required></textarea></p>
         <p>User story:<br>
-        <textarea rows="6" cols="30" name="user_story" id="user_story"required></textarea></p>
+        <textarea rows="6" cols="30" name="user_story" id="user_story" maxlength="512" required></textarea></p>
         <p>Acceptance criteria:<br>
-        <textarea rows="6" cols="30" name="acceptance_criteria" id="acceptance_criteria"required></textarea></p>
+        <textarea rows="6" cols="30" name="acceptance_criteria" id="acceptance_criteria"maxlength="256"required></textarea></p>
         <p>Business Value<br>
         <input type="number" min="100" max="1500" step="100" name="business_value" id="business_value"required></p>
         <p>Estimation (h)<br>
@@ -43,11 +43,11 @@
         <form action="/update" method="POST">
         <h2>Super Sprinter 3000 - Edit Story</h2>
         <p>Story Title:<br>
-        <textarea rows="1" cols="30" name="story_title" id="story_title" required>{{ update_list[1] }}</textarea></p>
+        <textarea rows="1" cols="30" name="story_title" id="story_title" maxlength="64" required>{{ update_list[1] }}</textarea></p>
         <p>User story:<br>
-        <textarea rows="6" cols="30" name="user_story" id="user_story" required>{{ update_list[2] }}</textarea></p>
+        <textarea rows="6" cols="30" name="user_story" id="user_story" maxlength="512" required>{{ update_list[2] }}</textarea></p>
         <p>Acceptance criteria:<br>
-        <textarea rows="6" cols="30" name="acceptance_criteria" id="acceptance_criteria" required>{{ update_list[3] }}</textarea></p>
+        <textarea rows="6" cols="30" name="acceptance_criteria" id="acceptance_criteria" maxlength="256" required>{{ update_list[3] }}</textarea></p>
         <p>Business Value<br>
         <input type="number" min="100" max="1500" step="100" name="business_value" id="business_value" value="{{ update_list[4] }}"required></p>
         <p>Estimation (h)<br>
